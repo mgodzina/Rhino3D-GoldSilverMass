@@ -1,0 +1,16 @@
+﻿Option Explicit
+'Script written by MGodzina
+'Script version 13 grudnia 2014 12:02:09
+
+Call Main()
+	Sub Main()
+		Dim strObjectID, X, intSrebro, intZloto
+		strObjectID = Rhino.GetObject("Select an object to calculate mass", , , True)
+		If IsNull(strObjectID) Then Exit Sub
+		X = Rhino.SurfaceVolume(strObjectID)
+		intSrebro = int(CStr(X(0)) * 1.04) / 100
+		intZloto = int(CStr(X(0)) * 1.34) / 100
+		
+		Rhino.Print "Srebro 925: " & intSrebro & "g Zloto 14k: " & intZloto & "g"
+		
+	End Sub
